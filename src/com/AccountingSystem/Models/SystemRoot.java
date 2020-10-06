@@ -16,19 +16,6 @@ public class SystemRoot implements Serializable{
     public ArrayList<User> users;
     //ArrayList<User> currentUsers;
 
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public LocalDate getSystemInitialDate() {
-        return systemInitialDate;
-    }
-
-    public User getSystemCreator() {
-        return users.get(0);
-    }
-
     public ArrayList<User> getUsers() {
         return users;
     }
@@ -43,14 +30,14 @@ public class SystemRoot implements Serializable{
         users.add(systemCreator);
     }
 
-    public void AddCategory (String categoryName, User user, Category parentCategory)
+    public void AddRootCategory (String categoryName, User user, Category parentCategory)
     {
         rootCategories.add(new Category(categoryName.toUpperCase(),user,parentCategory, LocalDate.now()));
 
         System.out.println("Root Category " + categoryName.toUpperCase() + " is succesfully added.\t");
     }
 
-    public void RemoveCategory(String categoryName)
+    public void RemoveRootCategory(String categoryName)
     {
         try
         {

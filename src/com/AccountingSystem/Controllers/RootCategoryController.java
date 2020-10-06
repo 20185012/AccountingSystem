@@ -26,12 +26,12 @@ public class RootCategoryController {
                 {
                     case "1":
                         System.out.println("How do you want to name this new root category?");
-                        systemRoot.AddCategory(scanner.next(), user ,null);
+                        systemRoot.AddRootCategory(scanner.next(), user ,null);
                         break;
 
                     case "2":
                         System.out.println("Which category would you like to delete?");
-                        systemRoot.RemoveCategory(scanner.next().toUpperCase());
+                        systemRoot.RemoveRootCategory(scanner.next().toUpperCase());
                         break;
 
                     case "3":
