@@ -25,38 +25,52 @@ public class CategoryController {
         while(true)
         {
             System.out.println("Choose an action for " + category.getCategoryName() + " category\n"
-                    + "\t1.Buy something\n"
-                    + "\t2.Sell something\n"
-                    + "\t3.Add new subcategory\n"
-                    + "\t4.Remove  subcategory\n"
-                    + "\t5.Manage subcategory\n"
-                    + "\t6.Show category information\n"
-                    + "\t7.Go back\n"
-                    + "\t8.Quit\n");
+                    + "\t1.Overall Finances\n"
+                    + "\t2.Buy something\n"
+                    + "\t3.See history of purchases\n"
+                    + "\t4.Sell something\n"
+                    + "\t5.See history of sales\n"
+                    + "\t6.Add new subcategory\n"
+                    + "\t7.Remove  subcategory\n"
+                    + "\t8.Manage subcategory\n"
+                    + "\t9.Show category information\n"
+                    + "\t10.Go back\n"
+                    + "\t11.Quit\n");
 
 
             switch (scanner.next())
             {
                 case "1":
-
+                    category.ShowOverallFinances();
                     break;
 
                 case "2":
+                    category.BuySomething(scanner);
+                    break;
+
+                case "3":
+                    category.ShowOutcomeHistory();
+                    break;
+
+                case "4":
 
                     break;
 
+                case "5":
 
-                case "3":
+                    break;
+
+                case "6":
                     System.out.println("How do you want to name this new subcategory?");
                     category.AddSubCategory(scanner.next(),user, category);
                     break;
 
-                case "4":
+                case "7":
                     System.out.println("Which category do you want to remove?");
                     category.RemoveSubCategory(scanner.next());
                     break;
 
-                case "5":
+                case "8":
                     System.out.println("Which category would you like to manage?");
                     manageCategory(scanner,
                                    category.getSubCategories().
@@ -64,14 +78,14 @@ public class CategoryController {
                                    user);
                     break;
 
-                case "6":
+                case "9":
                     System.out.println(category.toString());
                     break;
 
-                case "7":
+                case "10":
                     return;
 
-                case "8":
+                case "11":
                     System.exit(0);
 
                 default:

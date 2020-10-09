@@ -4,19 +4,19 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Receivable implements Serializable {
-    float receivableSum;
+    Money receivableSum;
     LocalDate receivableDate;
     //String receivableDescription;
     //String remitterName;
     //String remitterAccountNumber;
 
 
-    public Receivable(float receivableSum, LocalDate receivableDate) {
-        this.receivableSum = receivableSum;
-        this.receivableDate = receivableDate;
+    public Receivable(Money amount) {
+        this.receivableSum = amount;
+        this.receivableDate = LocalDate.now();
     }
 
-    public float getReceivableSum() {
+    public Money getReceivableSum() {
         return receivableSum;
     }
 
