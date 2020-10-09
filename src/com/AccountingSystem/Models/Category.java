@@ -6,6 +6,8 @@ import lombok.Data;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Stack;
 
 @Data
 public class Category implements Serializable {
@@ -16,18 +18,17 @@ public class Category implements Serializable {
     //ArrayList<User> usersWithAccess;
     ArrayList<Category> subCategories;
     Category parentCategory;
-    ArrayList<Receivable> income;
-    ArrayList<Payment> expense;
+    float overallFinances;
+    Stack<Receivable> income;
+    Stack<Payment> expense;
     LocalDate dateCreated;
     //LocalDate dateModified;
-    //LocalDate dateDeleted;
     //boolean active;
 
 
     public Category(String categoryName,
                     User creatorUser,
-                    Category parentCategory,
-                    LocalDate dateCreated) {
+                    Category parentCategory) {
 
         this.categoryName = categoryName;
         this.responsibleUsers = new ArrayList<User>();
@@ -38,9 +39,9 @@ public class Category implements Serializable {
         if (parentCategory != null) this.parentCategory = parentCategory;
         else this.parentCategory = null;
 
-        this.income = new ArrayList<Receivable>();
-        this.expense = new ArrayList<Payment>();
-        this.dateCreated = dateCreated;
+        this.income = new Stack<Receivable>();
+        this.expense = new Stack<Payment>();
+        this.dateCreated = LocalDate.now();
     }
 
 
@@ -60,9 +61,10 @@ public class Category implements Serializable {
 
 
 
+
     public void AddSubCategory(String categoryName, User user, Category parentCategory)
     {
-        subCategories.add(new Category(categoryName.toUpperCase(), user, parentCategory, LocalDate.now()));
+        subCategories.add(new Category(categoryName.toUpperCase(), user, parentCategory));
 
         System.out.println("Subcategory " + categoryName + " is successfully created.");
     }
@@ -78,6 +80,12 @@ public class Category implements Serializable {
         {
             System.out.println("Such category doesn't exist. \t");
         }
+    }
+
+    public void BuySomething(Scanner scanner)
+    {
+        System.out.println("How much this thing costs?");
+        expense.push( new Payment(Float.parseFloat(scanner.next())));
     }
 
 

@@ -25,27 +25,38 @@ public class CategoryController {
         while(true)
         {
             System.out.println("Choose an action for " + category.getCategoryName() + " category\n"
-                    + "\t1.Add new subcategory\n"
-                    + "\t2.Remove  subcategory\n"
-                    + "\t3.Manage subcategory\n"
-                    + "\t4.Show category information\n"
-                    + "\t5.Go back\n"
-                    + "\t6.Quit\n");
+                    + "\t1.Buy something\n"
+                    + "\t2.Sell something\n"
+                    + "\t3.Add new subcategory\n"
+                    + "\t4.Remove  subcategory\n"
+                    + "\t5.Manage subcategory\n"
+                    + "\t6.Show category information\n"
+                    + "\t7.Go back\n"
+                    + "\t8.Quit\n");
 
 
             switch (scanner.next())
             {
                 case "1":
+
+                    break;
+
+                case "2":
+
+                    break;
+
+
+                case "3":
                     System.out.println("How do you want to name this new subcategory?");
                     category.AddSubCategory(scanner.next(),user, category);
                     break;
 
-                case "2":
+                case "4":
                     System.out.println("Which category do you want to remove?");
                     category.RemoveSubCategory(scanner.next());
                     break;
 
-                case "3":
+                case "5":
                     System.out.println("Which category would you like to manage?");
                     manageCategory(scanner,
                                    category.getSubCategories().
@@ -53,14 +64,14 @@ public class CategoryController {
                                    user);
                     break;
 
-                case "4":
+                case "6":
                     System.out.println(category.toString());
                     break;
 
-                case "5":
+                case "7":
                     return;
 
-                case "6":
+                case "8":
                     System.exit(0);
 
                 default:

@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Receivable implements Serializable {
-    //int receivableId;
     float receivableSum;
     LocalDate receivableDate;
     //String receivableDescription;

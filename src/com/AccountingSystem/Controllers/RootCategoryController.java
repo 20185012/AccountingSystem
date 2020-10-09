@@ -36,7 +36,15 @@ public class RootCategoryController {
 
                     case "3":
                         System.out.println("Which category would you like to manage?");
-                        CategoryController.manageCategory(scanner, systemRoot.getRootCategories().get(CategoryController.findCategoryIndex(scanner.next(),systemRoot.getRootCategories())),user);
+                        try {
+                            CategoryController.manageCategory(scanner,
+                                    //category from root categories
+                                    systemRoot.getRootCategories().get(CategoryController.findCategoryIndex(scanner.next(), systemRoot.getRootCategories())),
+                                    user);
+                        } catch (IndexOutOfBoundsException e) {
+                            System.out.println("Such root category doesn't exist");
+                        }
+
                         break;
 
                     case "4":

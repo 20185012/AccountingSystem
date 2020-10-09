@@ -32,7 +32,7 @@ public class Main {
 
                 case "2":
                     System.out.println("Whats the name of the system?");
-                    systemRoot = new SystemRoot(scanner.next(), LocalDate.now(), Admin);
+                    systemRoot = new SystemRoot(scanner.next(), Admin);
                     break;
 
                 case "3":
@@ -49,7 +49,7 @@ public class Main {
             System.out.println("Enter number of your decided action:\n"
                     + "\t 1.Access Accounting System \n"
                     + "\t 2.Get System Information \n"
-                    + "\t 3.Quit \n");
+                    + "\t 3.Quit \n\n Username: Admin \t Password: Admin");
             switch (scanner.next())
             {
                 case "1":

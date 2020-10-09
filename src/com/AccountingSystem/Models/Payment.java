@@ -15,9 +15,9 @@ public class Payment implements Serializable {
     //String paymentBeneficiaryNumber;
 
 
-    public Payment(float paymentSum, LocalDate paymentDate) {
+    public Payment(float paymentSum) {
         this.paymentSum = paymentSum;
-        this.paymentDate = paymentDate;
+        this.paymentDate = LocalDate.now();
     }
 
     public float getPaymentSum() {

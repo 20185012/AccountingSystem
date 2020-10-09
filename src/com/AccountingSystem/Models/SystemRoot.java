@@ -20,10 +20,10 @@ public class SystemRoot implements Serializable{
         return users;
     }
 
-    public SystemRoot(String companyName, LocalDate systemInitialDate, User systemCreator)
+    public SystemRoot(String companyName,  User systemCreator)
     {
         this.companyName = companyName;
-        this.systemInitialDate = systemInitialDate;
+        this.systemInitialDate = LocalDate.now();
         rootCategories = new ArrayList<Category>();
 
         users = new ArrayList<User>();
@@ -32,7 +32,7 @@ public class SystemRoot implements Serializable{
 
     public void AddRootCategory (String categoryName, User user, Category parentCategory)
     {
-        rootCategories.add(new Category(categoryName.toUpperCase(),user,parentCategory, LocalDate.now()));
+        rootCategories.add(new Category(categoryName.toUpperCase(),user,parentCategory));
 
         System.out.println("Root Category " + categoryName.toUpperCase() + " is succesfully added.\t");
     }
