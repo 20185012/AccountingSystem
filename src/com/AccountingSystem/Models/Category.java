@@ -113,6 +113,28 @@ public class Category implements Serializable {
     }
 
 
+    public void SellSomething(Scanner scanner)
+    {
+        System.out.println("How much this thing costs?");
+
+        Money price = new Money(Money.SpecifyPrice());
+
+        Receivable receivable = new Receivable(price);
+
+        income.add(receivable);
+
+        overallFinances.SubtractMoney(price);
+    }
+
+    public void ShowIncomeHistory()
+    {
+        for (Receivable receivable : income)
+        {
+            receivable.ShowReceivableDetails();
+        }
+    }
+
+
 
     @Override
     public String toString() {

@@ -1,6 +1,7 @@
 package com.AccountingSystem.Models;
 
 import java.io.Serializable;
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 
 public class Receivable implements Serializable {
@@ -24,8 +25,8 @@ public class Receivable implements Serializable {
         return receivableDate;
     }
 
-    @Override
-    public String toString() {
-        return "ReceivedMoney: " + this.receivableSum + " " + " Date: " + this.receivableDate + "\n";
+    public void ShowReceivableDetails()
+    {
+        System.out.println("Sum: " + this.receivableSum.getAmount() + " Transaction date: " + this.receivableDate);
     }
 }

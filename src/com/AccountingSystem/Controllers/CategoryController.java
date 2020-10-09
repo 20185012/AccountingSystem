@@ -53,11 +53,11 @@ public class CategoryController {
                     break;
 
                 case "4":
-
+                    category.SellSomething(scanner);
                     break;
 
                 case "5":
-
+                    category.ShowIncomeHistory();
                     break;
 
                 case "6":

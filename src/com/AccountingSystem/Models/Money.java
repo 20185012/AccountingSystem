@@ -47,7 +47,10 @@ public class Money {
         return floatNumber;
     }
 
-
+    public void MakeNegative(Money money)
+    {
+        this.amount *= -1;
+    }
 
 
     public static float SpecifyPrice()
@@ -60,5 +63,10 @@ public class Money {
     public void AddMoney(Money money)
     {
         this.amount += SetFloatPrecision(money.getAmount(),2);
+    }
+
+    public void SubtractMoney(Money money)
+    {
+        this.amount -= SetFloatPrecision(money.getAmount(),2);
     }
 }
