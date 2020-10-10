@@ -1,15 +1,16 @@
 package com.AccountingSystem.Models;
 
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Money {
+public class Money implements Serializable {
     private float amount;
 
 
 
     public Money(Float amount) {
-        this.amount = amount;
+        this.amount = SetMonetaryPrecision(amount);
     }
 
     public Money() {
@@ -17,7 +18,7 @@ public class Money {
     }
 
     public float getAmount() {
-        return amount;
+        return SetMonetaryPrecision(amount);
     }
 
 
@@ -31,7 +32,7 @@ public class Money {
         try {
 
             float amount = Float.parseFloat(text);
-            amount = SetFloatPrecision(amount, 2);
+            amount = SetMonetaryPrecision(amount);
             return amount;
 
         } catch (NumberFormatException e) {
@@ -41,17 +42,11 @@ public class Money {
 
     }
 
-    private static float SetFloatPrecision(float floatNumber, int decimalPlaces) {
-        float multiplier = (float) Math.pow(10,decimalPlaces);
+    private static float SetMonetaryPrecision(float floatNumber) {
+        float multiplier = (float) Math.pow(10,2);
         floatNumber = (Math.round(floatNumber * multiplier) / multiplier);
         return floatNumber;
     }
-
-    public void MakeNegative(Money money)
-    {
-        this.amount *= -1;
-    }
-
 
     public static float SpecifyPrice()
     {
@@ -62,11 +57,11 @@ public class Money {
 
     public void AddMoney(Money money)
     {
-        this.amount += SetFloatPrecision(money.getAmount(),2);
+        this.amount += money.getAmount();
     }
 
     public void SubtractMoney(Money money)
     {
-        this.amount -= SetFloatPrecision(money.getAmount(),2);
+        this.amount -= money.getAmount();
     }
 }

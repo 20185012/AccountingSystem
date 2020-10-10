@@ -45,7 +45,7 @@ public class CategoryController {
                     break;
 
                 case "2":
-                    category.BuySomething(scanner);
+                    category.BuySomething();
                     break;
 
                 case "3":
@@ -53,7 +53,7 @@ public class CategoryController {
                     break;
 
                 case "4":
-                    category.SellSomething(scanner);
+                    category.SellSomething();
                     break;
 
                 case "5":

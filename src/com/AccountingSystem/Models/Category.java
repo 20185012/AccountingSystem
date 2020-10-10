@@ -7,7 +7,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Stack;
 
 @Data
 public class Category implements Serializable {
@@ -51,10 +50,6 @@ public class Category implements Serializable {
         return categoryName;
     }
 
-    public LocalDate getDateCreated() {
-        return dateCreated;
-    }
-
     public ArrayList<Category> getSubCategories() { return subCategories; }
 
     public void setCategoryName(String categoryName) {
@@ -91,7 +86,7 @@ public class Category implements Serializable {
         System.out.println("Overall monetary balance is: " + overallFinances.getAmount());
     }
 
-    public void BuySomething(Scanner scanner)
+    public void BuySomething()
     {
         System.out.println("How much this thing costs?");
 
@@ -101,7 +96,7 @@ public class Category implements Serializable {
 
         expense.add(payment);
 
-        overallFinances.AddMoney(price);
+        overallFinances.SubtractMoney(price);
     }
 
     public void ShowOutcomeHistory()
@@ -113,7 +108,7 @@ public class Category implements Serializable {
     }
 
 
-    public void SellSomething(Scanner scanner)
+    public void SellSomething()
     {
         System.out.println("How much this thing costs?");
 
@@ -123,7 +118,7 @@ public class Category implements Serializable {
 
         income.add(receivable);
 
-        overallFinances.SubtractMoney(price);
+        overallFinances.AddMoney(price);
     }
 
     public void ShowIncomeHistory()
