@@ -1,7 +1,6 @@
 package com.AccountingSystem.Models;
 
 import java.io.Serializable;
-import java.sql.SQLOutput;
 import java.time.LocalDate;
 
 public class Receivable implements Serializable {
@@ -17,13 +16,11 @@ public class Receivable implements Serializable {
         this.receivableDate = LocalDate.now();
     }
 
-    public Money getReceivableSum() {
-        return receivableSum;
+    public static Receivable MakeNewReceivable (Money amount)
+    {
+        return new Receivable(amount);
     }
 
-    public LocalDate getReceivableDate() {
-        return receivableDate;
-    }
 
     public void ShowReceivableDetails()
     {

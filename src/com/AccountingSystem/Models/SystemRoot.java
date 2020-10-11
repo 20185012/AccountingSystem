@@ -6,7 +6,6 @@ import lombok.Data;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 @Data
 public class SystemRoot implements Serializable{
@@ -34,7 +33,7 @@ public class SystemRoot implements Serializable{
     {
         rootCategories.add(new Category(categoryName.toUpperCase(),user,parentCategory));
 
-        System.out.println("Root Category " + categoryName.toUpperCase() + " is succesfully added.\t");
+        System.out.println("Root Category " + categoryName.toUpperCase() + " is successfully added.\t");
     }
 
     public void RemoveRootCategory(String categoryName)

@@ -92,12 +92,14 @@ public class Category implements Serializable {
 
         Money price = new Money(Money.SpecifyPrice());
 
-        Payment payment = new Payment(price);
+        Payment payment = Payment.MakeNewPayment(price);
 
-        expense.add(payment);
+        AddToExpenses(payment);
 
-        overallFinances.SubtractMoney(price);
+        SubstractFromOverall(price);
     }
+
+
 
     public void ShowOutcomeHistory()
     {
@@ -112,9 +114,9 @@ public class Category implements Serializable {
     {
         System.out.println("How much this thing costs?");
 
-        Money price = new Money(Money.SpecifyPrice());
+        Money price =  new Money(Money.SpecifyPrice());
 
-        Receivable receivable = new Receivable(price);
+        Receivable receivable = Receivable.MakeNewReceivable(price);
 
         income.add(receivable);
 
@@ -129,7 +131,13 @@ public class Category implements Serializable {
         }
     }
 
+    private void SubstractFromOverall(Money price) {
+        overallFinances.SubtractMoney(price);
+    }
 
+    private void AddToExpenses(Payment payment) {
+        expense.add(payment);
+    }
 
     @Override
     public String toString() {

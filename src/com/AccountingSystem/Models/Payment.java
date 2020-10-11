@@ -20,12 +20,9 @@ public class Payment implements Serializable {
         this.paymentDate = LocalDate.now();
     }
 
-    public Money getPaymentSum() {
-        return paymentSum;
-    }
-
-    public LocalDate getPaymentDate() {
-        return paymentDate;
+    public static Payment MakeNewPayment(Money amount)
+    {
+        return new Payment(amount);
     }
 
     public void ShowPaymentDetails()

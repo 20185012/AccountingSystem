@@ -3,7 +3,7 @@ package com.AccountingSystem.Models;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class  User implements Serializable {
     //int userId;
     //String name;
     //String email;
