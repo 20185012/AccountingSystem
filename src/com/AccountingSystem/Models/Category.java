@@ -139,7 +139,6 @@ public class Category implements Serializable {
         expense.add(payment);
     }
 
-    @Override
     public String toString() {
         StringBuilder categoryInfo = new StringBuilder("Category: " + this.categoryName + "\nResponsible Users: ");
 

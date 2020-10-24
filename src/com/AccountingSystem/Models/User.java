@@ -2,18 +2,22 @@ package com.AccountingSystem.Models;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
-public class  User implements Serializable {
+public abstract class User implements Serializable {
     //int userId;
-    //String name;
-    //String email;
-    //String phone;
-    public String loginName;
-    private String loginPassword;
+    protected String name;
+    protected String email;
+    protected String phone;
+    protected String loginName;
+    protected String loginPassword;
     //ArrayList<Category> categoriesResponsible;
-    //boolean active;
+    boolean active;
 
-    public User(String loginName, String loginPassword) {
+    public User(String name, String email, String phone, String loginName, String loginPassword) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
         this.loginName = loginName;
         this.loginPassword = loginPassword;
     }
