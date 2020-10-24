@@ -8,23 +8,25 @@ import java.time.LocalDate;
 @Data
 public class Payment implements Serializable {
     //int paymentId;
-    float paymentSum;
+    Money paymentSum;
     LocalDate paymentDate;
     //String paymentDescription;
     //String paymentBeneficiary;
     //String paymentBeneficiaryNumber;
 
 
-    public Payment(float paymentSum) {
-        this.paymentSum = paymentSum;
+    public Payment(Money amount) {
+        this.paymentSum = amount;
         this.paymentDate = LocalDate.now();
     }
 
-    public float getPaymentSum() {
-        return paymentSum;
+    public static Payment MakeNewPayment(Money amount)
+    {
+        return new Payment(amount);
     }
 
-    public LocalDate getPaymentDate() {
-        return paymentDate;
+    public void ShowPaymentDetails()
+    {
+        System.out.println("Sum: " + this.paymentSum.getAmount() + "  Transaction Date: " + this.paymentDate);
     }
 }

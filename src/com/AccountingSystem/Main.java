@@ -6,14 +6,12 @@ import com.AccountingSystem.Models.SystemRoot;
 import com.AccountingSystem.Controllers.RootCategoryController;
 
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        User Admin = new User("Admin","Admin");
+        User Admin = new IndividualUser("Simonas","Bazinys", "simonas.bazinys@stud.vgtu.lt", "+37064259269","Admin","Admin");
 
         Scanner scanner = new Scanner(System.in);
 

@@ -1,8 +1,9 @@
 package com.AccountingSystem.Controllers;
 
+import com.AccountingSystem.Models.IndividualUser;
+import com.AccountingSystem.Models.LegalUser;
 import com.AccountingSystem.Models.User;
 
-import javax.sound.midi.SysexMessage;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -52,8 +53,26 @@ public class UserController {
 
     private static void AddNewUser(Scanner scanner, ArrayList<User> users)
     {
-        System.out.println("Please provide username and password for new user");
-        users.add(new User(scanner.next(),scanner.next()));
+        System.out.println("What kind of user would you like to add? \n1.IndividualUser \n2.LegalUser \n3.Go back \n4.Exit");
+        switch (scanner.next())
+        {
+            case "1":
+                AddIndividualUser(users);
+                break;
+
+            case "2":
+                AddLegalUser(users);
+                break;
+
+            case "3":
+                return;
+
+            case "4":
+                System.exit(0);
+
+            default:
+                System.out.println("Read the options again.");
+        }
     }
 
     private static void RemoveUser(Scanner scanner, String userName, ArrayList<User> users)
@@ -61,6 +80,7 @@ public class UserController {
         if (UserIsValid(scanner, userName, users))
         {
             users.remove(FindUserIndex(userName, users));
+            //ar nera kad trinamas vartotojas yra kazkurios kategorijos astakingas asmuo
         }
     }
 
@@ -184,5 +204,54 @@ public class UserController {
             System.out.print(user.getLoginName() + " ");
         }
         System.out.print("\n");
+    }
+
+    public static void AddIndividualUser(ArrayList<User> users)
+    {
+        try {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Enter details for new individual user. \t Pattern: Name;Surname;Email;Phone;Username;Password");
+
+            String[] userDetails = scanner.next().replace(" ", "").split(";");
+
+            User individualUser = new IndividualUser(userDetails[0],
+                    userDetails[1],
+                    userDetails[2],
+                    userDetails[3],
+                    userDetails[4],
+                    userDetails[5]);
+
+            users.add(individualUser);
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void AddLegalUser(ArrayList<User> users)
+    {
+        try {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Enter details for new legal user. \t Pattern:Name;Address;Email;Phone;CompanyCode;Username;Password");
+
+            String[] userDetails = scanner.next().replace(" ", "").split(";");
+
+            User legalUser = new LegalUser(userDetails[0],
+                    userDetails[1],
+                    userDetails[2],
+                    userDetails[3],
+                    userDetails[4],
+                    userDetails[5],
+                    userDetails[6]);
+
+            users.add(legalUser);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println(e.toString());
+        }
     }
 }

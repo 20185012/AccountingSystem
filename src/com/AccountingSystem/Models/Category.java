@@ -7,7 +7,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Stack;
 
 @Data
 public class Category implements Serializable {
@@ -18,9 +17,9 @@ public class Category implements Serializable {
     //ArrayList<User> usersWithAccess;
     ArrayList<Category> subCategories;
     Category parentCategory;
-    float overallFinances;
-    Stack<Receivable> income;
-    Stack<Payment> expense;
+    Money overallFinances;
+    ArrayList<Receivable> income;
+    ArrayList<Payment> expense;
     LocalDate dateCreated;
     //LocalDate dateModified;
     //boolean active;
@@ -33,24 +32,22 @@ public class Category implements Serializable {
         this.categoryName = categoryName;
         this.responsibleUsers = new ArrayList<User>();
         this.responsibleUsers.add(creatorUser);
-
         this.subCategories = new ArrayList<>();
 
         if (parentCategory != null) this.parentCategory = parentCategory;
         else this.parentCategory = null;
 
-        this.income = new Stack<Receivable>();
-        this.expense = new Stack<Payment>();
+        this.income = new ArrayList<Receivable>();
+        this.expense = new ArrayList<Payment>();
+        this.overallFinances = new Money();
+
+
         this.dateCreated = LocalDate.now();
     }
 
 
     public String getCategoryName() {
         return categoryName;
-    }
-
-    public LocalDate getDateCreated() {
-        return dateCreated;
     }
 
     public ArrayList<Category> getSubCategories() { return subCategories; }
@@ -82,14 +79,66 @@ public class Category implements Serializable {
         }
     }
 
-    public void BuySomething(Scanner scanner)
+
+
+    public void ShowOverallFinances()
+    {
+        System.out.println("Overall monetary balance is: " + overallFinances.getAmount());
+    }
+
+    public void BuySomething()
     {
         System.out.println("How much this thing costs?");
-        expense.push( new Payment(Float.parseFloat(scanner.next())));
+
+        Money price = new Money(Money.SpecifyPrice());
+
+        Payment payment = Payment.MakeNewPayment(price);
+
+        AddToExpenses(payment);
+
+        SubstractFromOverall(price);
     }
 
 
-    @Override
+
+    public void ShowOutcomeHistory()
+    {
+        for (Payment payment : expense)
+        {
+            payment.ShowPaymentDetails();
+        }
+    }
+
+
+    public void SellSomething()
+    {
+        System.out.println("How much this thing costs?");
+
+        Money price =  new Money(Money.SpecifyPrice());
+
+        Receivable receivable = Receivable.MakeNewReceivable(price);
+
+        income.add(receivable);
+
+        overallFinances.AddMoney(price);
+    }
+
+    public void ShowIncomeHistory()
+    {
+        for (Receivable receivable : income)
+        {
+            receivable.ShowReceivableDetails();
+        }
+    }
+
+    private void SubstractFromOverall(Money price) {
+        overallFinances.SubtractMoney(price);
+    }
+
+    private void AddToExpenses(Payment payment) {
+        expense.add(payment);
+    }
+
     public String toString() {
         StringBuilder categoryInfo = new StringBuilder("Category: " + this.categoryName + "\nResponsible Users: ");
 
